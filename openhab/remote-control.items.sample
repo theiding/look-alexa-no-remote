@@ -1,0 +1,3 @@
+String EntertainmentBedroomTV { channel="harmonyhub:device:bedroom:bedroomTV:buttonPress" }
+String EntertainmentBedroomAppleTV { channel="harmonyhub:device:bedroom:bedroomAppleTV:buttonPress" }
+String EntertainmentBedroomDVR { channel="harmonyhub:device:bedroom:bedroomDVR:buttonPress" }

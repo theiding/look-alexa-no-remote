@@ -1,0 +1,7 @@
+Bridge harmonyhub:hub:bedroom [host="111.111.111.111", name="Harmony Hub Bedroom"] {
+    device bedroomTV [name="Bedroom TV"]
+    device bedroomAppleTV [name="Bedroom Apple TV"]
+    device bedroomDVR [name="Bedroom DVR"]
+}
+
+

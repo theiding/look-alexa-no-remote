@@ -1,0 +1,28 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "summary": "Complete remote control of entertainment devices such as TVs, AppleTV or DVD players via Alexa voice control",
+          "examplePhrases": [
+            "Alexa remote control"
+          ],
+          "name": "remote-control",
+          "description": "Eliminate the need for any remote control and instead control all of your entertainment devices entirely through Alexa. Simply start a session by saying 'Alexa remote control', then say the names of buttons you want Alexa to press. For example, say 'guide, down, right three times, enter'. You can also switch to another device. For example say 'Switch to Apple TV'. Note that Alexa will mute your TV while you provide button commands so you won't have to yell. To end your session just say 'done'."
+        }
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "N.A.",
+      "category": "SMART_HOME",
+      "distributionCountries": []
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "sourceDir": "lambda/custom"
+        }
+      }
+    },
+    "manifestVersion": "1.0"
+  }
+}

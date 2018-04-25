@@ -1,0 +1,375 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "remote control",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "PressRemoteButtonIntent",
+                    "slots": [
+                        {
+                            "name": "RemoteButton",
+                            "type": "LIST_OF_REMOTE_BUTTONS"
+                        },
+                        {
+                            "name": "PressCount",
+                            "type": "AMAZON.NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "{RemoteButton}",
+                        "{RemoteButton} {PressCount} times",
+                        "{RemoteButton} {PressCount}",
+                        "{PressCount} times {RemoteButton}",
+                        "{PressCount} {RemoteButton}",
+                        "press {RemoteButton}",
+                        "press {RemoteButton} {PressCount} times",
+                        "press {PressCount} times {RemoteButton}",
+                        "press {PressCount} {RemoteButton}"
+                    ]
+                },
+                {
+                    "name": "PressTwoRemoteButtonsIntent",
+                    "slots": [
+                        {
+                            "name": "RemoteButtonOne",
+                            "type": "LIST_OF_REMOTE_BUTTONS"
+                        },
+                        {
+                            "name": "PressCountOne",
+                            "type": "AMAZON.NUMBER"
+                        },
+                        {
+                            "name": "RemoteButtonTwo",
+                            "type": "LIST_OF_REMOTE_BUTTONS"
+                        },
+                        {
+                            "name": "PressCountTwo",
+                            "type": "AMAZON.NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "{RemoteButtonOne} and {RemoteButtonTwo}",
+                        "{RemoteButtonOne} and {RemoteButtonTwo} {PressCountTwo} times",
+                        "{RemoteButtonOne} and {RemoteButtonTwo} {PressCountTwo}",
+                        "{RemoteButtonOne} and {PressCountTwo} times {RemoteButtonTwo}",
+                        "{PressCountOne} {RemoteButtonOne} and {RemoteButtonTwo}",
+                        "{RemoteButtonOne} {PressCountOne} times and {RemoteButtonTwo}",
+                        "{RemoteButtonOne} {PressCountOne} and {RemoteButtonTwo}",
+                        "{PressCountOne} times {RemoteButtonOne} and {RemoteButtonTwo}",
+                        "{RemoteButtonOne} {PressCountOne} times and {RemoteButtonTwo} {PressCountTwo} times",
+                        "{RemoteButtonOne} {PressCountOne} and {RemoteButtonTwo} {PressCountTwo}",
+                        "{PressCountOne} times {RemoteButtonOne} and {PressCountTwo} times {RemoteButtonTwo}",
+                        "{PressCountOne} {RemoteButtonOne} and {PressCountTwo} {RemoteButtonTwo}",
+                        "{RemoteButtonOne} {RemoteButtonTwo}",
+                        "{RemoteButtonOne} {RemoteButtonTwo} {PressCountTwo} times",
+                        "{RemoteButtonOne} {RemoteButtonTwo} {PressCountTwo}",
+                        "{RemoteButtonOne} {PressCountTwo} times {RemoteButtonTwo}",
+                        "{PressCountOne} {RemoteButtonOne} {RemoteButtonTwo}",
+                        "{RemoteButtonOne} {PressCountOne} times {RemoteButtonTwo}",
+                        "{RemoteButtonOne} {PressCountOne} {RemoteButtonTwo}",
+                        "{PressCountOne} times {RemoteButtonOne} {RemoteButtonTwo}",
+                        "{RemoteButtonOne} {PressCountOne} times {RemoteButtonTwo} {PressCountTwo} times",
+                        "{RemoteButtonOne} {PressCountOne} {RemoteButtonTwo} {PressCountTwo}",
+                        "{PressCountOne} times {RemoteButtonOne} {PressCountTwo} times {RemoteButtonTwo}",
+                        "{PressCountOne} {RemoteButtonOne} {PressCountTwo} {RemoteButtonTwo}"
+                    ]
+                },
+                {
+                    "name": "SwitchTVSourceIntent",
+                    "slots": [
+                        {
+                            "name": "TVSource",
+                            "type": "LIST_OF_TV_SOURCES"
+                        }
+                    ],
+                    "samples": [
+                        "{TVSource}",
+                        "switch to {TVSource}",
+                        "control {TVSource}",
+                        "remote control {TVSource}"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "LIST_OF_REMOTE_BUTTONS",
+                    "values": [
+                        {
+							"id": "0",
+                            "name": {
+                                "value": "zero"
+                            }
+                        },
+                        {
+							"id": "1",
+                            "name": {
+                                "value": "one"
+                            }
+                        },
+                        {
+							"id": "2",
+                            "name": {
+                                "value": "two"
+                            }
+                        },
+                        {
+							"id": "3",
+                            "name": {
+                                "value": "three"
+                            }
+                        },
+                        {
+							"id": "4",
+                            "name": {
+                                "value": "four"
+                            }
+                        },
+                        {
+							"id": "5",
+                            "name": {
+                                "value": "five"
+                            }
+                        },
+                        {
+							"id": "6",
+                            "name": {
+                                "value": "six"
+                            }
+                        },
+                        {
+							"id": "7",
+                            "name": {
+                                "value": "seven"
+                            }
+                        },
+                        {
+							"id": "8",
+                            "name": {
+                                "value": "eight"
+                            }
+                        },
+                        {
+							"id": "9",
+                            "name": {
+                                "value": "nine"
+                            }
+                        },
+                        {
+							"id": "Smart",
+                            "name": {
+                                "value": "smart"
+                            }
+                        },
+                        {
+							"id": "PreviousChapter",
+                            "name": {
+                                "value": "previous",
+                                "synonyms": [
+                                    "previous chapter"
+                                ]
+                            }
+                        },
+                        {
+							"id": "NextChapter",
+                            "name": {
+                                "value": "next",
+                                "synonyms": [
+                                    "next chapter"
+                                ]
+                            }
+                        },
+                        {
+							"id": "PageDown",
+                            "name": {
+                                "value": "page down"
+                            }
+                        },
+                        {
+							"id": "PageUp",
+                            "name": {
+                                "value": "page up"
+                            }
+                        },
+                        {
+							"id": "Home",
+                            "name": {
+                                "value": "home"
+                            }
+                        },
+                        {
+							"id": "OK",
+                            "name": {
+                                "value": "ok",
+                                "synonyms": [
+                                    "enter",
+                                    "select"
+                                ]
+                            }
+                        },
+                        {
+							"id": "DirectionLeft",
+                            "name": {
+                                "value": "left"
+                            }
+                        },
+                        {
+							"id": "DirectionRight",
+                            "name": {
+                                "value": "right"
+                            }
+                        },
+                        {
+							"id": "DirectionUp",
+                            "name": {
+                                "value": "up"
+                            }
+                        },
+                        {
+							"id": "DirectionDown",
+                            "name": {
+                                "value": "down"
+                            }
+                        },
+                        {
+							"id": "Menu",
+                            "name": {
+                                "value": "menu"
+                            }
+                        },
+                        {
+							"id": "Exit",
+                            "name": {
+                                "value": "exit button"
+                            }
+                        },
+                        {
+							"id": "Guide",
+                            "name": {
+                                "value": "guide"
+                            }
+                        },
+                        {
+							"id": "Info",
+                            "name": {
+                                "value": "info"
+                            }
+                        },
+                        {
+							"id": "ChannelUp",
+                            "name": {
+                                "value": "channel up"
+                            }
+                        },
+                        {
+							"id": "ChannelDown",
+                            "name": {
+                                "value": "channel down"
+                            }
+                        },
+                        {
+							"id": "FastForward",
+                            "name": {
+                                "value": "fast forward"
+                            }
+                        },
+                        {
+							"id": "Rewind",
+                            "name": {
+                                "value": "rewind"
+                            }
+                        },
+                        {
+							"id": "Play",
+                            "name": {
+                                "value": "play"
+                            }
+                        },
+                        {
+							"id": "Pause",
+                            "name": {
+                                "value": "pause"
+                            }
+                        },
+                        {
+							"id": "Stop",
+                            "name": {
+                                "value": "stop"
+                            }
+                        },
+                        {
+							"id": "Replay",
+                            "name": {
+                                "value": "replay"
+                            }
+                        },
+                        {
+							"id": "Record",
+                            "name": {
+                                "value": "record"
+                            }
+                        },
+                        {
+							"id": "Back",
+                            "name": {
+                                "value": "back",
+                                "synonyms": [
+                                    "last"
+                                ]
+                            }
+                        },
+                        {
+							"id": "Xfinity",
+                            "name": {
+                                "value": "xfinity"
+                            }
+                        },
+                        {
+							"id": "Done",
+                            "name": {
+                                "value": "done",
+								"synonyms": ["end","cancel"]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "LIST_OF_TV_SOURCES",
+                    "values": [
+                        {
+							"id": "EntertainmentBedroomTV",
+                            "name": {
+                                "value": "TV",
+								"synonyms": ["television"]
+                            }
+                        },
+                        {
+							"id": "EntertainmentBedroomAppleTV",
+                            "name": {
+                                "value": "Apple TV"
+                            }
+                        },
+                        {
+							"id": "EntertainmentBedroomDVR",
+                            "name": {
+                                "value": "DVR",
+								"synonyms": ["Comcast", "cable", "cable TV"]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
