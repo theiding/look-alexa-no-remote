@@ -66,7 +66,7 @@ You can now test your skill. Of course there won't be any remote control command
 Now let's configure the skill to handle your own entertainment devices.
 1. Voice model
 
-	The voice model leverages a list of buttons and devices to define what set of buttons and devices are allowed in skill invocations. Configure the list of buttons and devices by editing `look-alexa-no-remote/model/en-US.json`:
+	The voice model leverages a list of buttons and devices to define what set of buttons and devices are allowed in skill invocations. Configure the list of buttons and devices by editing `look-alexa-no-remote/alexa/remote-control/models/en-US.json`:
 	- List of buttons
 
 		Find the `LIST_OF_REMOTE_BUTTONS`. This list defines all the remote buttons that are suppported for your devices.
@@ -86,7 +86,7 @@ Now let's configure the skill to handle your own entertainment devices.
 		Update the list by removing devices you don't need or by adding ones that are missing for your setup. <br>
 2. Skill and devices configuration
 
-	Provide general skill and device configuration by editing `alexa-remote-control/lambda/custom/config.js`:
+	Provide general skill and device configuration by editing `look-alexa-no-remote/alexa/remote-control/lambda/custom/config.js`:
 	- <a id="skill-configuration"></a>Skill - Configure the general skill settings in the `skill` object. Follow the comments next to each property. 
 	- <a id="skill-configuration"></a>Devices - For each device that you defined in the [list of devices](#list-of-devices)  above specify a section in the `device` object with the name of the device id. Within each device id object provide:
 		- <a id="button-command-configuration"></a>`buttons` - The buttons map maps the button id to a device and web service specific button command. The device specific button command is sent in the REST API call (not the generic button id). Note that in most cases button id and button command are the same, but at times they differ (e.g. a Harmony Hub based web service will expect button command `OK` for the "OK" button for an Xfinity DVR, but `Select` for the "OK" button for an Apple TV).
