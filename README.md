@@ -29,13 +29,15 @@ You will [run the Alexa skill in AWS](#1-alexa-skill-setup) and [provide a web s
 	$ cd look-alexa-no-remote/alexa/remote-control/lambda/custom
 	$ npm install
 	```
-3. Create your own configuration file from the sample file
+3. Create your own configuration files from the sample files
  	```bash
 	$ cp config.js.sample config.js
+	$ cd ../../models
+	$ cp en-US.json.sample en-US.json
 	```
 4. Create and deploy skill and lambda function
 	```
-	$ cd ../..
+	$ cd ..
 	$ ask deploy
 	```
 
