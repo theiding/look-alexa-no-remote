@@ -63,7 +63,7 @@ You can now test your skill. Of course there won't be any remote control command
 	- `sendCmd: itemCmd['item']=EntertainmentBedroomTV,['cmd']=Mute` We unmute the TV (by toggling "Mute") when our session ends.
 	
 ## 1.4. Configuration
-Now let's configure the skill to handle your own entertainment devices.
+Now let's configure the skill to handle your own entertainment devices. Check out the [FAQ](#faq-commands) to determine command strings. 
 1. Voice model
 
 	The voice model leverages a list of buttons and devices to define what set of buttons and devices are allowed in skill invocations. Configure the list of buttons and devices by editing `look-alexa-no-remote/alexa/remote-control/models/en-US.json`:
@@ -190,10 +190,12 @@ This implementation of the above [REST API](#2-1-rest-api) leverages [openHAB](h
 	- `serviceHost` to the IP of the device running your openHAB server. Make sure the IP is publicly visible so your Lambda function can reach it while [considering security implications](https://docs.openhab.org/installation/security.html). 
 	- `servicePort` to `8080`
 
+The OpenHAB server automatically hosts a REST service for the above REST API for each item defined in the .items file. The REST service passes the sent command to the receiving item, which results in the command getting passed to the Harmony Hub channel as configured in the `.items` file. So we are getting our desired REST services for free now. 
+	
 # 2.2.3 Testing
 1. Trigger a manual REST API call from the command line:
 	```
-	curl -X POST --header "Content-Type: text/plain" --header "Accept: application/json" -d "{cmd}" 	"http://{serviceHost}:8080/rest/items/{item}"
+	curl -X POST --header "Content-Type: text/plain" --header "Accept: application/json" -d "{cmd}" "http://{serviceHost}:8080/rest/items/{item}"
 	```
 	where
 	- `{cmd}` is the button command you want to test
@@ -202,7 +204,7 @@ This implementation of the above [REST API](#2-1-rest-api) leverages [openHAB](h
 	    
 	Example:
 	```
-	curl -X POST --header "Content-Type: text/plain" --header "Accept: application/json" -d 	"DirectionRight" "http://111.111.111.111:8080/rest/items/EntertainmentBedroomDVR"
+	curl -X POST --header "Content-Type: text/plain" --header "Accept: application/json" -d "DirectionRight" "http://111.111.111.111:8080/rest/items/EntertainmentBedroomAppleTV"
 	```
 	Your test command should now execute on your test device. 
 2. End to End Test
@@ -229,3 +231,7 @@ This implementation of the above [REST API](#2-1-rest-api) leverages [openHAB](h
     	[ItemCommandEvent] - Item 'EntertainmentBedroomDVR' received command DirectionRight
         ```
 	- `openhab.log` logs miscellaneous operational information. In particular make sure there are no errors re. your items, things and Harmony Hub binding.
+5. <a id="faq-commands"></a>Awesome that I can configure my own system, but now how do I know what commands to specify for `skill.tvMute`/`skill.tvUnmute` and in `device` for `buttons` map and `input`?
+
+	The specific commands are web service dependent. Your web service receives the command string with each REST API call, so you need to specify whatever your web service expects.
+	If you are using the Harmony Hub based sample REST API implementation, then the command string is passed to the Openhab Harmony Hub binding (via the channel you defined in the `.items` file). That binding expects the Harmony Hub command format. Go to your MyHarmony application, select a device, click "Add or Fix a Command" and you will see a list of all the commands this device can understand. 

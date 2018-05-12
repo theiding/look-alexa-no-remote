@@ -3,9 +3,9 @@ const skill = {
 	serviceHost: '111.111.111.111',				// IP for web service that handles button commands. Use '111.111.111.111' for testing (supresses actual web service call).
 	servicePort: 8080,							// Port for web service that handles button commands
 	tv: 'EntertainmentBedroomTV',				// Input changes and mute commands are sent to this device
-	tvMute: 'Mute',								// Command to mute TV
-	tvUnmute: 'Mute',							// Command to unmute TV
-	defaultDevice: 'EntertainmentBedroomDVR'	// When the user starts a session button commands are sent to this device until the user switches to another device
+	tvMute: 'Mute',								// Command to mute TV. Specific command will depend on your remote control web service implementation. See Installation FAQ how to determine command.
+	tvUnmute: 'Mute',							// Command to unmute TV. Typically same as tvMute, if command simply toggles mute state.
+	defaultDevice: 'EntertainmentBedroomDVR'	// When the user starts a session all button commands are sent to this device id until the user switches to another device
 };
 
 // Mapping of button ids to device specific button commands
