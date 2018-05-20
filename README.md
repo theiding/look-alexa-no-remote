@@ -63,7 +63,7 @@ You can now test your skill. Of course there won't be any remote control command
 	- `sendCmd: itemCmd['item']=EntertainmentBedroomTV,['cmd']=Mute` We unmute the TV (by toggling "Mute") when our session ends.
 	
 ## 1.4. Configuration
-Now let's configure the skill to handle your own entertainment devices. Check out the [FAQ](#faq-commands) to determine command strings. 
+Now let's configure the skill to handle your own entertainment devices. Check out the [FAQ](#faq-commands) if you need help determining command strings in this section. 
 1. Voice model
 
 	The voice model leverages a list of buttons and devices to define what set of buttons and devices are allowed in skill invocations. Configure the list of buttons and devices by editing `look-alexa-no-remote/alexa/remote-control/models/en-US.json`:

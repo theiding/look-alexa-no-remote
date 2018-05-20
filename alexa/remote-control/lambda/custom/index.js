@@ -125,7 +125,7 @@ function pressRemoteButton(alexa, remoteButtonSlot, pressCountSlot, cmdPromise) 
 		};	
 	var remoteButtonResult = slot(remoteButtonSlot);
 	if (remoteButtonResult) { // We were able to match the button
-		if (remoteButtonResult.id == 'Done') { // User requested to end the session
+		if (remoteButtonResult.id == 'Done') { // User requested to end the session; TODO this should be implemented as separate Done Intent
 			result.cmdPromise = endSession();
 			result.done = true;
 		}
