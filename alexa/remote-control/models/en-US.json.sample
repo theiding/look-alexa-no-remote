@@ -330,6 +330,12 @@
                             }
                         },
                         {
+							"id": "Settings",
+                            "name": {
+                                "value": "settings"
+                            }
+                        },
+                        {
 							"id": "Xfinity",
                             "name": {
                                 "value": "xfinity"

@@ -192,8 +192,6 @@ function switchTVSource(alexa, tvSourceSlot) {
 		alexa.attributes['WINDING'] = false; // Reset since we have a new source
 		
 		var cmdPromise = null;
-		if (currentTVSource == Config.skill.tv)
-			cmdPromise = sendCmd({'item': Config.skill.tv, 'cmd': 'Smart'}, cmdPromise);
 		cmdPromise = sendCmd({'item': Config.skill.tv, 'cmd': Config.device[tvSourceResult.id]['input']}, cmdPromise);
 		emit(alexa, ALEXA_OK, ALEXA_EMPTY_REPROMPT, cmdPromise);
 	}

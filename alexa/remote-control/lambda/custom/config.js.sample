@@ -56,9 +56,10 @@ const device = {
 			DirectionDown: 'DirectionDown',
 			Exit: 'Exit',
 			OK: 'OK',
-			Smart: 'Smart'
+			Smart: 'Smart',
+			Settings: 'Settings'
 		},
-		input: 'Smart',
+		input: '',	// Leaving blank as there is no actual input change to control the tv itself (e.g. tv settings etc.)
 		name: 'TV'
 	},
 	EntertainmentBedroomAppleTV:{
