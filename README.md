@@ -10,6 +10,7 @@ This project aims to fill the gap. Plus it hopefully serves as a helpful tutoria
 You will [run the Alexa skill in AWS](#1-alexa-skill-setup) and [provide a web service to send remote control commands](#2-remote-control-web-service-setup) on a server of your choice (based on [openHAB](http://www.openhab.org) and [Harmony Hub](https://www.logitech.com/en-us/product/harmony-hub) if you leverage the [sample web service implementation](#2-2-sample-rest-api-implementation-with-openhab)). 
 
 [Watch on Youtube](https://www.youtube.com/playlist?list=PL2dHEdWB8noP3AYP-6R7pXXEuJ68vPTE1)
+
 	- Demo
 	- Setup
 	- Architecture
