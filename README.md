@@ -1,5 +1,7 @@
 # Look Alexa, no Remote!
-<iframe width="560" height="315" src="https://www.youtube.com/embed/gI9hY1ttnXI?listType=playlist&list=PL2dHEdWB8noP3AYP-6R7pXXEuJ68vPTE1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+Watch Demo:
+
+[![Demo](https://img.youtube.com/vi/gI9hY1ttnXI/0.jpg)](https://www.youtube.com/playlist?list=PL2dHEdWB8noP3AYP-6R7pXXEuJ68vPTE1)
 
 Eliminate the need for any physical remote controls and instead control all of your entertainment devices entirely through Alexa using voice commands.
 
@@ -9,10 +11,19 @@ This project aims to fill the gap. Plus it hopefully serves as a helpful tutoria
 
 You will [run the Alexa skill in AWS](#1-alexa-skill-setup) and [provide a web service to send remote control commands](#2-remote-control-web-service-setup) on a server of your choice (based on [openHAB](http://www.openhab.org) and [Harmony Hub](https://www.logitech.com/en-us/product/harmony-hub) if you leverage the [sample web service implementation](#2-2-sample-rest-api-implementation-with-openhab)). 
 
-Deep-dive into installation, architecture and implementation on Youtube:
-<iframe width="560" height="315" src="https://www.youtube.com/embed/nSb6zOHtyDo?listType=playlist&list=PL2dHEdWB8noP3AYP-6R7pXXEuJ68vPTE1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/1X_e4rxFZ2A?listType=playlist&list=PL2dHEdWB8noP3AYP-6R7pXXEuJ68vPTE1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/wlfzf5Xv7W4?listType=playlist&list=PL2dHEdWB8noP3AYP-6R7pXXEuJ68vPTE1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+Deep-dive into installation, architecture and implementation on Youtube.
+
+Watch installation:
+
+[![Installation](https://img.youtube.com/vi/nSb6zOHtyDo/0.jpg)](https://www.youtube.com/playlist?list=PL2dHEdWB8noP3AYP-6R7pXXEuJ68vPTE1)
+
+Watch architecture:
+
+[![architecture](https://img.youtube.com/vi/1X_e4rxFZ2A/0.jpg)](https://www.youtube.com/playlist?list=PL2dHEdWB8noP3AYP-6R7pXXEuJ68vPTE1)
+
+Watch implementation:
+
+[![Implementation](https://img.youtube.com/vi/wlfzf5Xv7W4/0.jpg)](https://www.youtube.com/playlist?list=PL2dHEdWB8noP3AYP-6R7pXXEuJ68vPTE1)
 
 # 1. Alexa Skill Setup
 
