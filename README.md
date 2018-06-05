@@ -1,5 +1,5 @@
 # Look Alexa, no Remote!
-[Watch the skill in action](https://youtu.be/gI9hY1ttnXI)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gI9hY1ttnXI?listType=playlist&list=PL2dHEdWB8noP3AYP-6R7pXXEuJ68vPTE1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 Eliminate the need for any physical remote controls and instead control all of your entertainment devices entirely through Alexa using voice commands.
 
@@ -9,9 +9,12 @@ This project aims to fill the gap. Plus it hopefully serves as a helpful tutoria
 
 You will [run the Alexa skill in AWS](#1-alexa-skill-setup) and [provide a web service to send remote control commands](#2-remote-control-web-service-setup) on a server of your choice (based on [openHAB](http://www.openhab.org) and [Harmony Hub](https://www.logitech.com/en-us/product/harmony-hub) if you leverage the [sample web service implementation](#2-2-sample-rest-api-implementation-with-openhab)). 
 
-# 1. Alexa Skill Setup
+Deep-dive into installation, architecture and implementation on Youtube:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nSb6zOHtyDo?listType=playlist&list=PL2dHEdWB8noP3AYP-6R7pXXEuJ68vPTE1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1X_e4rxFZ2A?listType=playlist&list=PL2dHEdWB8noP3AYP-6R7pXXEuJ68vPTE1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wlfzf5Xv7W4?listType=playlist&list=PL2dHEdWB8noP3AYP-6R7pXXEuJ68vPTE1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-[Watch the setup](https://youtu.be/nSb6zOHtyDo)
+# 1. Alexa Skill Setup
 
 ## 1.1. Prerequisites
 1. [Setup of ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html) (version 1.1.2 or newer)
@@ -235,10 +238,3 @@ The OpenHAB server automatically hosts a REST service for the above REST API for
 
 	The specific commands are web service dependent. Your web service receives the command string with each REST API call, so you need to specify whatever your web service expects.
 	If you are using the Harmony Hub based sample REST API implementation, then the command string is passed to the Openhab Harmony Hub binding (via the channel you defined in the `.items` file). That binding expects the Harmony Hub command format. Go to your MyHarmony application, select a device, click "Add or Fix a Command" and you will see a list of all the commands this device can understand. 
-
-# 4. Dig Deeper	
-[Watch all the videos](https://www.youtube.com/playlist?list=PL2dHEdWB8noP3AYP-6R7pXXEuJ68vPTE1)
-- Demo
-- Setup
-- Architecture
-- Implementation
