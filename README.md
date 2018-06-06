@@ -5,11 +5,11 @@ Watch Demo:
 
 Eliminate the need for any physical remote controls and instead control all of your entertainment devices entirely through Alexa using voice commands.
 
-Remote controls are frustrating	- they are never where you need them. With Alexa the opportunity has finally arrived to get rid of those infrared foes. But unfortunately there is no existing Alexa skill that can truly replace remote controls. Sure, via Alexa's Smart Home skills you can turn your TV on and off, control volume, issue playback command and invoke predefined activities - no problem. But how do you complete more complex tasks like watching your latest recording, pick a movie on your Apple TV or change your TV settings? 
+Remote controls are frustrating	- they are never where you need them. With Alexa the opportunity has finally arrived to get rid of those infrared foes. But unfortunately there is no existing Alexa skill that can truly replace remote controls. Sure, via Alexa's Smart Home skills you can turn your TV on and off, control volume, issue playback commands and invoke predefined activities - no problem. But how do you complete more complex tasks like watching your latest recording, pick a movie on your Apple TV or change your TV settings? 
 
 This project aims to fill the gap. Plus it hopefully serves as a helpful tutorial in general on how to create your own non-trivial Alexa skill. 
 
-You will [run the Alexa skill in AWS](#1-alexa-skill-setup) and [provide a web service to send remote control commands](#2-remote-control-web-service-setup) on a server of your choice (based on [openHAB](http://www.openhab.org) and [Harmony Hub](https://www.logitech.com/en-us/product/harmony-hub) if you leverage the [sample web service implementation](#2-2-sample-rest-api-implementation-with-openhab)). 
+You will [run the Alexa skill in AWS](#1-alexa-skill-setup) and [provide a web service to send remote control commands](#2-remote-control-web-service-setup) on a server of your choice (based on [openHAB](http://www.openhab.org) and [Harmony Hub](https://www.logitech.com/en-us/product/harmony-hub) if you leverage the [sample web service implementation](#22-sample-rest-api-implementation-with-openhab)). 
 
 Deep-dive into installation, architecture and implementation on Youtube.
 
@@ -93,7 +93,7 @@ Now let's configure the skill to handle your own entertainment devices. Check ou
 
 		Find the `LIST_OF_TV_SOURCES`. This list defines all the devices that are suppported.
         
-		Each entry contains an `id` that uniquely identifies the device. The device id will be sent in the [REST API call for each button command](#2-1-rest-api).
+		Each entry contains an `id` that uniquely identifies the device. The device id will be sent in the [REST API call for each button command](#21-rest-api).
         
 		The `value` entry specifies how the user can refer to the device. If you want to allow multiple names use the `synonynm` entry (e.g. in the sample config file the user can call the TV `TV` or `television`).
         
@@ -102,7 +102,7 @@ Now let's configure the skill to handle your own entertainment devices. Check ou
 
 	Provide general skill and device configuration by editing `look-alexa-no-remote/alexa/remote-control/lambda/custom/config.js`:
 	- <a id="skill-configuration"></a>Skill - Configure the general skill settings in the `skill` object. Follow the comments next to each property. 
-	- <a id="skill-configuration"></a>Devices - For each device that you defined in the [list of devices](#list-of-devices)  above specify a section in the `device` object with the name of the device id. Within each device id object provide:
+	- <a id="devices-configuration"></a>Devices - For each device that you defined in the [list of devices](#list-of-devices)  above specify a section in the `device` object with the name of the device id. Within each device id object provide:
 		- <a id="button-command-configuration"></a>`buttons` - The buttons map maps the button id to a device and web service specific button command. The device specific button command is sent in the REST API call (not the generic button id). Note that in most cases button id and button command are the same, but at times they differ (e.g. a Harmony Hub based web service will expect button command `OK` for the "OK" button for an Xfinity DVR, but `Select` for the "OK" button for an Apple TV).
 		
 			If a button doesn't have a map entry then that means it is not supported by the device.<br>
@@ -146,10 +146,10 @@ Select
 You can implement this REST API in whatever fashion best matches your existing system setup or you can use the provided sample implementation below.
 
 ## 2.2 Sample REST API Implementation with openHAB
-This implementation of the above [REST API](#2-1-rest-api) leverages [openHAB](http://www.openhab.org) and [Harmony Hub](https://www.logitech.com/en-us/product/harmony-hub). 
+This implementation of the above [REST API](#21-rest-api) leverages [openHAB](http://www.openhab.org) and [Harmony Hub](https://www.logitech.com/en-us/product/harmony-hub). 
 
 ### 2.2.1. Prerequisites
-1. [Install openHAB](https://docs.openhab.org/installation/index.html)(version 2.1 or newer)
+1. [Install openHAB](https://www.openhab.org/docs/installation/)(version 2.1 or newer)
 2. [Install Harmony Hub](https://support.myharmony.com/en-au/hub)
 
 ### 2.2.2 openHAB Configuration
@@ -161,7 +161,7 @@ This implementation of the above [REST API](#2-1-rest-api) leverages [openHAB](h
 	```
 2. <a id="thing"></a>Edit "thing"
 	
-    Edit `look-alexa-no-remote/openhab/remote-control.things`. This file [integrates your Harmony Hub with openHAB](https://docs.openhab.org/addons/bindings/harmonyhub/readme.html) by defining a "thing" that represents the Harmony Hub.
+    Edit `look-alexa-no-remote/openhab/remote-control.things`. This file [integrates your Harmony Hub with openHAB](https://www.openhab.org/addons/bindings/harmonyhub/) by defining a "thing" that represents the Harmony Hub.
     - Replace the host IP with the IP for your Harmony Hub (make sure it has a static IP that won't change with reboots).
     - For each of your entertainment devices enter one line of the following format:
     	```
@@ -175,7 +175,7 @@ This implementation of the above [REST API](#2-1-rest-api) leverages [openHAB](h
 
 3. Edit "items"
 
-	Edit `look-alexa-no-remote/openhab/remote-control.items`. This file defines an openHAB item for each device and [exposes the respective remote control web service](https://docs.openhab.org/configuration/restdocs.html).
+	Edit `look-alexa-no-remote/openhab/remote-control.items`. This file defines an openHAB item for each device and [exposes the respective remote control web service](https://www.openhab.org/docs/configuration/restdocs.html).
     
     For each of your entertainment devices enter one line of the following format:
 	```
@@ -188,7 +188,7 @@ This implementation of the above [REST API](#2-1-rest-api) leverages [openHAB](h
     Example: `String EntertainmentBedroomTV { channel="harmonyhub:device:main:bedroomTV:buttonPress" }`
 4. Copy your configuration files to your openHAB server. 
 
-	[File destination location](https://docs.openhab.org/installation/linux.html#file-locations) depends on your openHAB install. For a repository installation:
+	[File destination location](https://www.openhab.org/docs/installation/linux.html) depends on your openHAB install. For a repository installation:
 	``` 
 	cd look-alexa-no-remote/openhab
 	cp remote-control.things /etc/openhab2/things
@@ -196,12 +196,12 @@ This implementation of the above [REST API](#2-1-rest-api) leverages [openHAB](h
 	``` 
 5. Start openHAB Server	
 
-	[Start your openHAB server depending on your installation method](https://docs.openhab.org/installation/index.html) so it starts answering REST API calls.
+	[Start your openHAB server depending on your installation method](https://www.openhab.org/docs/installation/) so it starts answering REST API calls.
     
 6. Update host and port configuration
 
 	In [the skill configuration](#skill-configuration) update
-	- `serviceHost` to the IP of the device running your openHAB server. Make sure the IP is publicly visible so your Lambda function can reach it while [considering security implications](https://docs.openhab.org/installation/security.html). 
+	- `serviceHost` to the IP of the device running your openHAB server. Make sure the IP is publicly visible so your Lambda function can reach it while [considering security implications](https://www.openhab.org/docs/installation/security.html). 
 	- `servicePort` to `8080`
 
 The OpenHAB server automatically hosts a REST service for the above REST API for each item defined in the .items file. The REST service passes the sent command to the receiving item, which results in the command getting passed to the Harmony Hub channel as configured in the `.items` file. So we are getting our desired REST services for free now. 
@@ -239,7 +239,7 @@ The OpenHAB server automatically hosts a REST service for the above REST API for
 	Validate your .js file with <http://esprima.org/demo/validate.html>.
 4. My openHAB implementation of the REST API doesn't work. What to do?
 	
-    Start by [reviewing openHAB log files](https://docs.openhab.org/administration/logging.html).
+    Start by [reviewing openHAB log files](https://www.openhab.org/docs/administration/logging.html).
 	- `events.log` logs all commands sent to your items over the openHAB message bus via the REST API call, e.g. 
 		```
     	[ItemCommandEvent] - Item 'EntertainmentBedroomDVR' received command DirectionRight
