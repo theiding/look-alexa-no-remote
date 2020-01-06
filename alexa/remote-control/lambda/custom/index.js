@@ -1,5 +1,6 @@
 'use strict';
 var Alexa = require('alexa-sdk');
+var Https = require('https');
 var Http = require('http');
 var Config = require('./config');
 
@@ -260,47 +261,59 @@ function sendCmd(itemCmd, cmdPromise) {
 
 	if (Config.skill.serviceHost != '111.111.111.111') // Skip actual web service call for dummy IP for testing purposes
 		if (cmdPromise == null)
-			cmdPromise = callWebService(itemCmd, Config.skill.serviceHost, Config.skill.servicePort); // First call goes out straight away
+			cmdPromise = callWebService(itemCmd, 'POST', Config.skill.serviceHost, Config.skill.servicePort, Config.skill.auth); // First call goes out straight away
 		else
-			cmdPromise = cmdPromise.then(callWebService.bind(null, itemCmd, Config.skill.serviceHost, Config.skill.servicePort)); // Subsequent calls are chained
+			cmdPromise = cmdPromise.then(callWebService.bind(null, itemCmd, 'POST', Config.skill.serviceHost, Config.skill.servicePort, Config.skill.auth)); // Subsequent calls are chained
 
 	return cmdPromise;
 }
 
 // Actual web service invocation
-function callWebService(itemCmd, serviceHost, servicePort) {
+function callWebService(itemCmd, method, serviceHost, port, auth) {
+	console.log("callWebService " + serviceHost + ":" + port);//###
 	return new Promise(function(resolve, reject) {
-		console.log("callWebService: start");
+		var path = '/rest/items/' + itemCmd['item'];
+		if (method == 'PUT')
+			path += '/state';
 		const options = {
 			host: serviceHost,
-			port: servicePort,
-			path: '/rest/items/' + itemCmd['item'],
-			method: 'POST',
+			port: port,
+			path: path,
+			method: method,
 			headers: {
 				'Content-Type': 'text/plain',
 				'Accept': 'application/json'
-			}
+			},
+			auth: auth,
+			rejectUnauthorized: false //### this is a hack to get around self signed cert problem
 		};
-		const request = Http.request(options, function(response) {
-			if (response.statusCode !== 200) {
-				response.resume(); // Consume response data to free up memory
-				var err = new Error("Invalid status code: " + response.statusCode);
-				console.log("err=" + err);
+		const request = (port == 443 ? Https:Http).request(options, function(response) {
+			var data = null;
+			if (response.statusCode !== 200 && response.statusCode !== 202) {
+				response.resume(); // consume response data to free up memory
+				var err = new Error("Invalid statusCode: " + response.statusCode);
+				console.log("callWebService: Invalid status code, err=" + err);
 				reject(err);
 				return;
 			}
-			response.on('data', function (chunk) {
+			response.on('data', function (d) {
+				data = JSON.parse(d.toString());
 			});
-			response.on('end', function() {	// Successful request completion
-				console.log("callWebService: end");
-				resolve('ok');
+			response.on('end', function() {	// successful request completion
+				if (method == 'GET') {
+					//console.log("resolving!!!!!"+data['state']);//###
+					resolve(data);
+				}
+				else
+					resolve('ok');
 			});
 		});
-		request.on('error', (e) => {			// Couldn't connect
-			console.log("Couldn't connect, " + e);
+		request.on('error', (e) => {			// couldn't connect
+			console.log("callWebService: Couldn't connect, " + e);
 			reject(e);
 		});
-		request.write(itemCmd['cmd']);	// Post the command
+		if (method == 'POST' || method == 'PUT')
+			request.write(itemCmd['cmd']);	// post the command
 		request.end();
 	});
 }
